@@ -9,21 +9,33 @@
 </head>
 <body>
     <?php include 'partials/hotels.php' ?>
-    <?php
-    foreach ($hotels as $hotel) {
-        echo "<h3>Hotel: " . $hotel['name'] . "</h3>";
-        echo "<p>Descrizione: " . $hotel['description'] . "</p>";
-        echo "<p>Parcheggio: ";
-        if ($hotel['parking']) {
-            echo "Sì";
-        } else {
-            echo "No";
-        }
-        echo "</p>";
-        echo "<p>Voto medio: " . $hotel['vote'] . "</p>";
-        echo "<p>Distanza dal centro: " . $hotel['distance_to_center'] . " km</p>";
-        echo "<hr>";
-    }
-    ?>
+    <table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Descrizione</th>
+            <th>Parcheggio</th>
+            <th>Voto medio</th>
+            <th>Distanza dal centro</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($hotels as $hotel) { ?>
+        <tr>
+            <td><?php echo $hotel['name']; ?></td>
+            <td><?php echo $hotel['description']; ?></td>
+            <td>
+                <?php if ($hotel['parking']) { ?>
+                <span >Sì</span>
+                <?php } else { ?>
+                <span >No</span>
+                <?php } ?>
+            </td>
+            <td><?php echo $hotel['vote']; ?></td>
+            <td><?php echo $hotel['distance_to_center']; ?> km</td>
+        </tr>
+        <?php } ?>
+    </tbody>
+</table>
 </body>
 </html>
